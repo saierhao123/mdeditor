@@ -36,10 +36,10 @@
 
 <script setup>
 import { ref, watchEffect, onMounted } from 'vue';
-// 调整导入路径以匹配项目实际结构
-import { FileManager } from '../../core/storage/fileManager.js';
-import { ThemeStorage } from '../../core/theme/storage.js';
-import { STORAGE_KEYS } from '../../config/constants/defaults.js';
+// 修正导入路径 - 从相对路径改为基于src的绝对路径
+import { FileManager } from '@/core/storage/fileManager.js';
+import { ThemeStorage } from '@/core/theme/storage.js';
+import { STORAGE_KEYS } from '@/config/constants/defaults.js';
 
 // 状态管理
 const files = ref([]);
