@@ -73,4 +73,4 @@ export function useEditorEvents(onContentChange = () => {}, onScroll = () => {})
     bindScrollListener,
     unbindScrollListener
   };
-} 
+}

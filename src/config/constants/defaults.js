@@ -6,12 +6,11 @@
  * 确保在用户未设置或配置丢失时有合理的回退值。
  */
 
-
-
 /**
  * 存储键
  */
-export const STORAGE_KEYS = {
+export const STORAGE_KEYS = Object.freeze({
+  // 主题相关
   COLOR_THEME: 'markdown-editor-color-theme',
   CODE_STYLE: 'markdown-editor-code-style',
   THEME_SYSTEM: 'markdown-editor-theme-system',
@@ -19,7 +18,13 @@ export const STORAGE_KEYS = {
   FONT_SIZE: 'markdown-editor-font-size',
   LETTER_SPACING: 'markdown-editor-letter-spacing',
   LINE_HEIGHT: 'markdown-editor-line-height',
-};
+  
+  // 文件管理相关
+  FILES: 'md_editor_files',               // 存储所有文件数据
+  CURRENT_FILE_ID: 'md_editor_current_file_id', // 当前激活的文件ID
+  EDITOR_HISTORY: 'md_editor_history',    // 编辑器历史记录
+  EDITOR_CONTENT: 'md_editor_content'     // 最新编辑内容
+});
 
 /**
  * 主题默认配置 - 简化为统一默认主题
@@ -48,5 +53,3 @@ export const THEME_DEFAULTS = {
   SMOOTH_TRANSITION: true,
   TRANSITION_DURATION: 300,
 };
-
-

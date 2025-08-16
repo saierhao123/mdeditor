@@ -7,50 +7,48 @@
  *
  * 主要配置项:
  * 1.  **`plugins`**: 
- *     - `@vitejs/plugin-vue`: 这是官方的 Vue 插件，是让 Vite 能够理解和处理
- *       `.vue` 单文件组件（SFC）的核心。它负责将 SFC 编译成浏览器可以理解的
- *       JavaScript 和 CSS。
+ *     - `@vitejs/plugin-vue`: 官方 Vue 插件，支持 .vue 单文件组件
  *
- * 2.  **`server`**: 配置开发服务器的行为。
- *     - `port: 3000`: 指定开发服务器监听的端口号为 3000。
- *     - `host: true`: 将主机地址设置为 `0.0.0.0`。这使得开发服务器不仅可以通过
- *       `localhost` 访问，还可以通过局域网内的 IP 地址访问。这对于在移动设备上
- *       进行真机调试非常有用。
+ * 2.  **`resolve.alias`**: 路径别名配置，简化导入路径
+ *     - `@`: 指代 src 目录，避免冗长的相对路径
  *
- * 3.  **`build`**: 配置生产环境构建的行为。
- *     - `outDir: 'dist'`: 指定 `vite build` 命令的输出目录为 `dist`。
- *       这是存放最终打包好的静态文件的文件夹。
- *     - `assetsDir: 'assets'`: 指定生成的静态资源（如 JS、CSS、图片）
- *       在输出目录 (`dist`) 中的存放路径。例如，打包后的 JS 文件路径会是 `dist/assets/index.xxxx.js`。
+ * 3.  **`server`**: 开发服务器配置
+ *     - `port: 3000`: 开发服务器端口
+ *     - `host: true`: 允许局域网访问
  *
- * 这个配置文件相对简洁，利用了 Vite 的许多开箱即用的默认设置，
- * 同时根据项目的特定需求（如端口号、局域网访问）进行了定制。
+ * 4.  **`build`**: 生产构建配置
+ *     - `outDir: 'dist'`: 输出目录
+ *     - `assetsDir: 'assets'`: 静态资源目录
  */
 
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import { resolve } from 'path'; // 引入 path 模块处理路径
 
 // https://vitejs.dev/config/
 export default defineConfig({
   // 插件配置
   plugins: [
-    // Vue 插件，用于支持 .vue 单文件组件
-    vue()
+    vue() // 支持 Vue 单文件组件
   ],
+
+  // 路径解析配置
+  resolve: {
+    alias: {
+      // 配置 @ 作为 src 目录的别名
+      '@': resolve(__dirname, './src')
+    }
+  },
 
   // 开发服务器配置
   server: {
-    // 端口号
     port: 3000,
-    // 允许通过局域网 IP 访问
     host: true
   },
 
   // 生产构建配置
   build: {
-    // 输出目录
     outDir: 'dist',
-    // 静态资源目录
     assetsDir: 'assets'
   }
 });

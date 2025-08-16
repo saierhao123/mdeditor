@@ -34,6 +34,8 @@ export const EDITOR_OPERATIONS = Object.freeze({
     MIN: 1,
     MAX: 6,
     DEFAULT: 2,
+    AUTO_SAVE_ENABLED: true,        // 确保自动保存开启
+    AUTO_SAVE_DELAY: 10000,  
   }),
   
   // 列表缩进配置
